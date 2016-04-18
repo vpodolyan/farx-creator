@@ -1,0 +1,22 @@
+{
+  "name": "farx-creator",
+  "version": "0.0.1",
+  "description": "Tool for creating Fiddler auto-response files",
+  "main": "create-farx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vpodolyan/farx-creator.git"
+  },
+  "author": "vpodolyan",
+  "license": "",
+  "bugs": {
+    "url": "https://github.com/vpodolyan/farx-creator/issues"
+  },
+  "homepage": "https://github.com/vpodolyan/farx-creator#readme",
+  "dependencies": {
+    "data2xml": "^1.2.5"
+  }
+}
