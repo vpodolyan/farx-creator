@@ -1,13 +1,10 @@
 #!/usr/bin/env node
 
-var util = require('util');
 var fs = require('fs');
-var path = require('path');
+var util = require('util');
 var url = require('url');
 var data2xml = require('data2xml');
-var convert = data2xml({xmlheader: '<?xml version="1.0" standalone="yes" ?>\n'});
-
-const defaultFiddlerVer = "4.6.2.3";
+var rulesFactory = require('./rulesFactory.js');
 
 if (process.argv.length < 3) {
   console.log("Please specify path to a directory with js files ");
@@ -19,42 +16,30 @@ if (process.argv.length < 4) {
   return;
 }
 
-console.log(process.argv);
-
+const defaultFiddlerVer = "4.6.2.3";
 const filesPath = process.argv[2];
-var baseUrl = util.format("%s", process.argv[3]);
+const baseUrl = util.format("%s", process.argv[3]);
 
 console.log("BASE URL = " + baseUrl);
 
 // prepare js files
-fs.readdir(filesPath, (err, files) => {
-  if (err) throw err;
-
-  files.filter((file) => {
-    return file;//path.extname(file) == ".js";
-  }).forEach((file)=> {
-    // create rule based on filename and url
-    var matchUrl = baseUrl + "/" + file;
-    var fileName = path.join(filesPath, file);
-    console.log(matchUrl, fileName);
-  });
+rulesFactory(filesPath, baseUrl, (err, rules) => {
+  console.log("rules", rules);
 });
 
+// Rewrite following code in asynchronous way
+var rules = [];
+var convert = data2xml({xmlheader: '<?xml version="1.0" standalone="yes" ?>\n'});
 var xml = convert(
   "AutoResponder",
   {
     _attr: { LastSave: new Date().toISOString(), FiddlerVersion: "4.6.2.3"  },
     State: {
-      _attr: { Enabled: false, Fallthrough: false, UseLatency: false },
-      ResponseRule: {
-        _attr: {
-          Match: "https://www-test.bmednet.it/lr/html/js/med/nac/conversione/fondi_terzi/fondi_terzi.js",
-          Action: "C:\\DevRootMediolanum\\Projects\\lr\\html\\js\\med\\nac\\conversione\\fondi_terzi\\fondi_terzi.js",
-          Enabled: false
-        }
+        _attr: { Enabled: false, Fallthrough: false, UseLatency: false },
+        ResponseRule: rules
       }
     }
-});
+);
 
 console.log(xml);
 
