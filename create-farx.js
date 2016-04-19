@@ -1,3 +1,6 @@
+#!/usr/bin/env node
+
+var util = require('util');
 var fs = require('fs');
 var path = require('path');
 var url = require('url');
@@ -19,7 +22,7 @@ if (process.argv.length < 4) {
 console.log(process.argv);
 
 const filesPath = process.argv[2];
-var baseUrl = process.argv[3];
+var baseUrl = util.format("%s", process.argv[3]);
 
 console.log("BASE URL = " + baseUrl);
 
