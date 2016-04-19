@@ -1,7 +1,7 @@
 {
   "name": "farx-creator",
   "version": "0.0.1",
-  "description": "Tool for creating Fiddler auto-response files",
+  "description": "A tool for creating Fiddler auto-response files",
   "main": "create-farx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
