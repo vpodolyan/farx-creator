@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/vpodolyan/farx-creator#readme",
   "dependencies": {
-    "data2xml": "^1.2.5"
+    "data2xml": "^1.2.5",
   }
 }
