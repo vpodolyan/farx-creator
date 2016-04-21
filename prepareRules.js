@@ -11,8 +11,9 @@ module.exports = function prepareRules(filesPath, baseUrl, handleSubdirs, doneCa
         return path.extname(fileName) == ".js";
     }).forEach((fileName) => {
         // create rule based on filename and url
-        var matchUrl = url.resolve(baseUrl, fileName);
-        var absFileName = path.resolve(filesPath, path.relative(filesPath, fileName));
+        var relativePath = path.relative(filesPath, fileName);
+        var matchUrl = url.resolve(baseUrl, relativePath);
+        var absFileName = path.resolve(filesPath, relativePath);
         console.log("rule", matchUrl, absFileName);
 
         // add rule to list

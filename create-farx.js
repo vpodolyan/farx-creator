@@ -28,7 +28,7 @@ prepareRules(filesPath, baseUrl, recursively, (err, rules) => {
 
     console.log("Rules = ", rules);
 
-    var xml = getXML(rules, (err, rules) => {
+    getXML(rules, (err, xml) => {
         if (err) throw err;
 
         console.log("XML = ", xml);
