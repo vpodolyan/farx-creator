@@ -1,6 +1,6 @@
 {
   "name": "farx-creator",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A tool for creating Fiddler auto-response files",
   "main": "create-farx",
   "scripts": {
