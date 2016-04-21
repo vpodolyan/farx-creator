@@ -7,3 +7,8 @@ To generate auto-response rules simple use ```./create-farx``` passing a directo
 ```shell
 ./create-farx ./ http://test.com/
 ```
+
+You can add files from subdirectories passing ```-r``` as third parameter
+```shell
+./create-farx ./sample http://test.com/ -r
+```
