@@ -6,6 +6,13 @@ var url = require('url');
 var data2xml = require('data2xml');
 var prepareRules = require('./prepareRules.js');
 
+var argsCount = process.argv.length - 2;
+
+// check if any paramenters
+// check first paramenter
+    // if not -r, start here
+    // if -r, shift right 
+
 if (process.argv.length < 3) {
     console.log("Please specify path to a directory with js files ");
     return;
